@@ -1,0 +1,92 @@
+{% extends 'os/base.html' %}
+{% block conteudo %}
+
+
+
+
+<h4> OS's em aberto CAMPO / REMOTO</h4>
+<div>
+<form action="{% url 'nome_area' %}" method="POST">
+  {% csrf_token %}
+
+
+
+  <form class="form-inline">
+    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Selecione a Área</label>
+    <select name="area" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+      <option selected name="area">Escolher...</option>
+      <option>Campo</option>
+      <option>Remoto</option>
+      <option>AGENDADA</option>
+    </select>
+  
+    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+      
+      
+    </div>
+  
+    <button type="submit" class="btn btn-primary my-1">Pesquisar Área</button>
+  </form>
+
+
+
+<div>
+<form action="{% url 'cap_os' %}" method="POST">
+{% csrf_token %} 
+
+  <table class="table table-success table-stripedy">
+      <tr>
+          <td width="80" height="40">Ordem de serviço</td>
+          <td width="113">Cliente</td>
+          <td width="250">Descricao problema</td>
+          <td width="40">Área</td>
+      </tr>
+      {% for i in query %}
+        {% if i.3 == 'AGENDADO'%}
+       
+        
+      <tr>
+          <th scope="row" class="p-3 mb-2 bg-warning text-dark">
+            <button name="subject" type="submit" value="{{i.0}}">{{i.0}}</button>
+           
+            
+          </th>
+          <td class="p-3 mb-2 bg-warning text-dark">{{i.1}}</td>
+          <td class="p-3 mb-2 bg-warning text-dark">{{i.2}}</td>
+          <td class="p-3 mb-2 bg-warning text-dark">{{i.3}}</td>
+        </tr>
+
+      {% else %}
+      <tr>
+        <th scope="row" class="p-3 mb-2 bg-white text-dark">
+          <button name="subject" type="submit" value="{{i.0}}">{{i.0}}</button>
+         
+          
+          </th>
+        <td class="p-3 mb-2 bg-white text-dark">{{i.1}}</td>
+        <td class="p-3 mb-2 bg-white text-dark">{{i.2}}</td>
+        <td class="p-3 mb-2 bg-white text-dark">{{i.3}}</td>
+          {% endif %}       
+         
+            
+       
+          
+      </tr>
+      {% endfor %}
+  </table>
+  </form> 
+</div>
+<audio controls autoplay muted>
+  <source src="erro.wav/" type="audio/wav" />
+  
+Your browser does not support the audio element.
+</audio>
+  {% endblock %}
+
+
+
+{% comment %} 
+{% for i in os %}
+{{ i.descricaoitem }}</br>
+
+{% endfor %} {% endcomment %}

@@ -1,0 +1,148 @@
+body{
+    align-items: center;
+}
+
+.page{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin-left:auto;
+    border-color: black;
+    padding-left: 10px;
+    align-items: center;
+   
+    
+}
+
+.page1{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin-left:auto;
+    border-color: black;
+    padding-left: 10px;
+    align-items: center;
+   
+    
+    
+}
+
+
+.text-1{
+    background-color: rgb(145, 247, 145);
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-family:Verdana;
+    font: bold;
+   
+    font-weight: bold;
+    font-family: var(--bs-font-sans-serif);
+
+    border: 1px solid none;
+    border-radius: 10px;
+    
+   
+    
+}
+
+.text-2{
+    font-weight: bold;
+}
+
+.label-form{
+
+
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    width: 800px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    outline: none;
+    
+    
+      
+}
+
+.label-form1{
+    /*border: 2px solid #4e4e4e;
+    width: 800px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #555;
+    outline: none;*/
+
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    width: 800px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    outline: none;
+    align-items: center;
+    
+      
+}
+
+.text-aling1{
+    text-align: right;
+    font-family: Arial;
+    font-weight: bold;
+    
+    font: bold;
+    font-size: 25px;
+}
+
+.text-aling11{
+    text-align: center;
+}
+
+.btn1 {
+   margin: 10px; 
+  height: 50px;
+   width: 800px;
+   background-color: #0d6efd;
+   color: #fff;
+   font-size: 14px;
+   font-weight: 600;
+   border: none !important;
+   transition: all linear 160ms;
+   cursor: pointer;
+  
+   border-radius: 15px;
+
+}
+.btn1:hover {
+   transform: scale(1.05);
+   background-color: #5596f8;
+
+}
+
+
+
+.test12{
+    
+    text-align: center;
+    background-color: white;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    width: 800px;
+    
+
+}
+
+.text01{
+    font-family: var(--bs-font-sans-serif);
+ font-size: 35px;
+}
+
+
+
+

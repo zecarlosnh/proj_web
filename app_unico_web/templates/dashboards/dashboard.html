@@ -1,0 +1,89 @@
+{% extends 'os/base.html' %}
+{% block conteudo %}
+
+<meta http-equiv="refresh" content="20; URL='/dashboard'"/>
+
+{% load static %}
+{% for i in alarme %}
+
+
+    {% if i.0 == "1" %}
+    <div class="p-3 mb-2 bg-danger text-white">
+        <h1 class="display-2">
+            <p class="text-center">ATENÇÃO</p>
+            <p class="text-center">NOVA OS ABERTA</p>
+        </h1>
+    </div>
+        
+    
+        <table class="table table-success table-stripedy">
+            <tr>
+                <td width="80" height="40">Ordem de serviço</td>
+                <td width="113">Cliente</td>
+      
+            </tr>
+            
+            {% for i in consulta_os %}
+            
+            <tr>
+                <th scope="row">
+                  <button name="subject" type="submit" value="{{i.0}}">{{i.0}}</button>
+                 
+                  
+                  </th>
+                <td>{{i.1}}</td>  
+            </tr>
+            {%endfor%}
+        </table>
+            <audio type="hidden" autoplay="autoplay" controls="controls">
+                <source src="{% static 'beep.mp3' %}" type="audio/mp3" />
+                
+                </audio>
+            
+    
+
+
+
+
+    {% elif alarme == "0" %}
+    
+   
+    <table class="table table-success table-stripedy">
+        <tr>
+            <td width="80" height="40">Ordem de serviço</td>
+            <td width="113">Cliente</td>
+  
+        </tr>
+        
+        {% for i in consulta_os %}
+        
+        <tr>
+            <th scope="row">
+              <button name="subject" type="submit" value="{{i.0}}">{{i.0}}</button>
+             
+              
+              </th>
+            <td>{{i.1}}</td>  
+        </tr>
+        {%endfor%}
+
+
+        {% endif %}
+
+
+
+{%endfor%}
+
+
+
+
+
+
+
+
+  
+
+
+
+
+{% endblock %}

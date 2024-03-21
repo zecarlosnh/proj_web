@@ -1,0 +1,14 @@
+{% extends 'os/base.html' %}
+{% block conteudo %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'preencheosretirada.css' %}">
+
+<h3>CADASTRO DE MOTORISTAS</h3>
+
+<form action="{% url 'cadastrar_motoristas' %}" method="POST">{% csrf_token %}
+  
+
+<textarea name="motorista" class="form-control" row='10' placeholder="INFORME O NOME DO MOTORISTA" type="text"></textarea></br>
+
+<button class="btn btn-primary" name="registra" type="submit">Cadastrar motorista</button>
+{% endblock %}

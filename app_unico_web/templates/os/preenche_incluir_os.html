@@ -1,0 +1,70 @@
+{% extends 'os/base.html' %}
+{% block conteudo %}
+
+
+    {% for i in query %}
+    <div class="form-control">
+        
+        <label class="form-control" rows="1">Cliente: {{ i.0}}</label>
+        <label class="form-control">CPF / CNPJ: {{ i.2 }}</label>
+        <label class="form-control">id cliente: {{ i.3 }}</label>
+    
+     
+        
+        
+            <form action="{% url 'cadastra_os' %}" method="POST">
+                {% csrf_token %} 
+                
+
+                 <div class="card">
+            
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="agendar" role="switch" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Agendar OS?</label>
+
+                    <input id="date" name="data" type="date" />
+                    <input type="time" id="appt" name="hora"/>
+                    
+                    {% comment %} min="09:00" max="18:00" required {% endcomment %}
+                  </div>
+                
+                </div>
+
+                
+                <div class="form-group col-md-4">
+                <label for="inputEstado">Área</label>
+                <select name = "area" id="inputEstado" class="form-control">
+                    <option selected>Escolher...</option>
+                    <option>Campo</option>
+                    <option>Remoto</option>
+                    
+                </select>
+                </div>
+                <input type="hidden" name="id" value="{{i.3}}">
+                <input type="hidden" name="nome_cliente" value="{{i.0}}">
+                <label class="form-control">informe Descrição do Item </label>
+                <textarea name="descricao_item" class="form-control" type="text"></textarea>
+                
+                
+                <label class="form-control">Informe o Problema Descrito: </label>
+                <textarea name="problema_descrito" class="form-control" type="text"></textarea>
+                
+               
+            
+                <button class="btn btn-primary" name="cnpjcpf" type="submit" value="{{i.2}}">INCLUIR</button>
+           
+        
+        
+        
+        </form>
+    
+    
+    
+    
+    
+        {% endfor %}
+    
+
+
+
+{% endblock %}

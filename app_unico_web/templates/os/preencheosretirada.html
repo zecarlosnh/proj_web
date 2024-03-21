@@ -1,0 +1,58 @@
+{% extends 'os/base.html' %}
+{% block conteudo %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'preencheosretirada.css' %}">
+<body>
+
+
+
+{%for i in query %}
+
+    <div class="page">  
+    <label class="label-form text-2">OS: {{ i.0 }}</label> 
+    <label class="label-form text-2" rows="1">Cliente: {{ i.1}}</label>
+    <!--<label class="label-form text-aling11 text-2">Solução do Problema:</label>-->
+    <div class="test12">
+        <h1 class="text01">Solução do Problema:</h1>
+        <label class="page1 text-1"> {{ i.2 }}</label>
+
+        <label class="text-aling1 page1">Total dos Serviços: R$ {{ i.3 }}</label>
+    </div>
+
+    </div>
+
+
+    <form action="{% url 'assinado_por' %}" method="POST">
+        {% csrf_token %} 
+        <div class="page">
+        {% comment %} <th scope="row"> {% endcomment %}
+        
+        <label class="text-2" rows="1">ASSINADO POR: </label>
+        <textarea name="nome_ass" class="label-form text-2" row='1'></textarea>
+        <button class="btn1" name="assina" type="submit" value="{{i.0}}">GRAVAR NOME ASSINANTE</button>
+        {% comment %} </th> {% endcomment %}
+    </form>
+</div> 
+
+
+
+<div class="page">
+    <form action="{% url 'assina' %}" method="POST">
+        {% csrf_token %} 
+        <th scope="row">
+        
+        <input type="hidden" name="regserv" value="assina">
+        <button class="btn1" name="assina" type="submit" value="{{i.0}}">Assinar</button>
+        </th>
+    </form>
+
+</div> 
+
+
+
+
+
+{% endfor %}
+
+</body>
+{% endblock %}

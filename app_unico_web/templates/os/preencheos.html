@@ -1,0 +1,142 @@
+{% extends 'os/base.html' %}
+{% block conteudo %}
+
+
+<div class="card">
+            
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" name="imprime" role="switch" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">imprimir?</label>
+      </div>
+    
+    </div>
+
+{% for i in query %}
+    <div class="form-control">
+    <label class="form-control">OS: {{ i.0 }}</label> 
+    <label class="form-control" rows="1">Cliente: {{ i.1}}</label>
+    <label class="form-control">Nome Fantasia: {{ i.4 }}</label>
+    <label class="form-control">Endereço: {{ i.5 }}</label>
+    <label class="form-control">Descricao do Problema: {{ i.2 }}</label>
+    {% if i.6 != '' %}      
+        <label class="p-3 mb-2 bg-warning text-dark">OS JÁ INICIADA! {{ i.6 }}</label>
+        {% comment %} <label class="form-control">Servico Executado já preenchido! {{ i.7 }}</label> {% endcomment %}
+        
+        <div style="display:none" class="form-control">
+            <form action="{% url 'iniciaos' %}" method="POST">
+                {% csrf_token %} 
+                <th scope="row">
+        
+                <button class="btn btn-primary" name="inicia" type="submit" value="{{i.0}}">Inicia OS</button>
+                <input type="hidden" name="regserv" value="inicia">
+            </form>
+        </div>
+    {% else %}
+    
+    <div class="form-control">
+        <form action="{% url 'iniciaos' %}" method="POST">
+            {% csrf_token %} 
+            <th scope="row">
+    
+            <button class="btn btn-primary" name="inicia" type="submit" value="{{i.0}}">Inicia OS</button>
+            <input type="hidden" name="regserv" value="inicia">
+        </form>
+    </div>
+    {% endif %}
+
+
+
+
+    {% if i.7 != '' %}      
+    
+    <label class="p-3 mb-2 bg-danger text-white">Servico Executado já preenchido! {{ i.7 }}</label> 
+    
+    {% endif %}
+
+    {% if i.8 == ''%}
+    </div>
+    
+        
+        <form action="{% url 'reg_ns' %}" method="POST">
+        {% csrf_token %} 
+        <div class="form-group row">
+            <label class="display-4">Informe o N/S: </label></br>
+            <div class="col-sm-10">
+            <textarea name="registrans" class="form-control" type="text"></textarea></br>
+                <th scope="row">
+                <button class="btn btn-danger" name="num_regos" type="submit" value="{{i.0}}">Atualizar N/S</button>
+                </th>
+            <input type="hidden" name="regserv" value="regns">
+        </form>
+    </div> 
+
+        
+    {% endif %}
+
+
+
+
+    
+
+</div>
+    <div class="form-control">
+        <form action="{% url 'reg_os' %}" method="POST">
+        {% csrf_token %} 
+        <label class="form-label">Serviço Executado</label></br>
+        <textarea name="servicoexecutado" class="form-control" row='10' type="text"></textarea></br>
+
+
+        <label class="form-label">ASSINADO POR:</label></br>
+
+        <textarea name="nome_ass" class="form-control" row='10' type="text"></textarea></br>
+
+        <th scope="row">
+            <button class="btn btn-primary" name="subject" type="submit" value="{{ i.0 }}">Cadastrar</button>
+        </th>
+        <input type="hidden" name="regserv" value="reg">
+        </form>
+</div>       
+
+
+
+
+<div class="form-control">
+    <form action="{% url 'assina' %}" method="POST">
+        {% csrf_token %} 
+        <th scope="row">
+        <button style="display:none" class="btn btn-primary" name="assina" type="submit" value="{{i.0}}">assina</button>
+        <input type="hidden" name="regserv" value="assina">
+
+    </form>
+
+    <div class="form-control">
+        <form action="{% url 'imprime_os' %}" method="POST">
+            {% csrf_token %} 
+            <button class="btn btn-primary" name="imprime" type="submit" value="{{i.0}}">Imprimir OS</button>
+
+
+        </form>
+
+    </div>
+
+    
+    <div class="form-control">
+        <form action="{% url 'envia_email' %}" method="POST">
+            {% csrf_token %} 
+            <button class="btn btn-primary" name="envia" type="submit" value="{{i.0}}">enviar</button>
+
+
+        </form>
+
+    </div>
+
+
+
+        {% endfor %}
+
+
+
+
+{% endblock %}
+
+

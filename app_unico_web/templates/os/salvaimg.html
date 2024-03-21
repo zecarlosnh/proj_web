@@ -1,0 +1,33 @@
+{% extends 'os/base.html' %}
+{% block conteudo %}
+{% for i in caminho %}
+
+{{i.prod}}
+
+{% endfor %}
+
+
+<div class="form-control">
+    <form action="{% url 'imprime_os' %}" method="POST">
+        {% csrf_token %} 
+        <button class="btn btn-primary" name="imprime" type="submit" value="{{os}}">Imprimir OS</button>
+
+
+    </form>
+
+</div>
+
+<div class="form-control">
+    <form action="{% url 'envia_email' %}" method="POST">
+        {% csrf_token %} 
+        <button class="btn btn-primary" name="envia" type="submit" value="{{os}}">enviar</button>
+
+
+    </form>
+
+</div>
+<h2>NIT10 agradece a confiança</h2>
+
+{{ i.0 }}
+
+{% endblock %}

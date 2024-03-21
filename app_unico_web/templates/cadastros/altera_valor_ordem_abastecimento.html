@@ -1,0 +1,18 @@
+{% extends 'os/base.html' %}
+{% block conteudo %}
+<h3>Alteração de Valor</h3>
+{% for i in ordens %}
+{{i.numero}}
+
+<form action="{% url 'registra_valor' %}" method="POST">
+    {% csrf_token %}
+ 
+<textarea name="valor" class="form-control" row='10' placeholder="INFORME O VALOR ABASTECIDO" type="text"></textarea></br>
+<button class="btn btn-primary" name="registra" type="submit" value="{{i.numero}}">atualizar valor</button>
+
+
+{% endfor %}
+
+</form>
+
+{% endblock%}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+   
+        <title>WEB UNICO OS</title>
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    
+    
+    
+    
+</head>
+<body>
+    <div class="page">
+        <form action="{% url 'logar' %}" method="POST" class="formLogin">
+          {% csrf_token %}   
+          <h1 class="h1-login">WEB UNICO OS</h1>
+            <p>Digite os seus dados de acesso no campo abaixo.</p>
+            <label for="email">Usuario:</label>
+            <input type="text" name="username" placeholder="Digite seu usuario" autofocus="true" />
+            <label for="password">Senha:</label>
+            <input type="password" name="password" placeholder="Digite sua senha" />
+            
+            <input type="submit" value="Acessar" class="btn" />                    
+                        
+            
+            <p class="copy-login">&copy; 2023 Pro Projects</p>
+        </form>
+    </div>
+    
+</body>
+
+</html>

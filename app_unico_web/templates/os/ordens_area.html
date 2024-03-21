@@ -1,0 +1,40 @@
+{% extends 'os/base.html' %}
+{% block conteudo %}
+
+<form action="{% url 'cap_os' %}" method="POST">
+    {% csrf_token %} 
+    
+      <table class="table table-success table-stripedy">
+          <tr>
+              <td width="80" height="40">Ordem de serviço</td>
+              <td width="113">Cliente</td>
+              <td width="250">Descricao problema</td>
+              <td width="40">Área</td>
+          </tr>
+          {% for i in query %}
+          <tr>
+              <th scope="row">
+                <button name="subject" type="submit" value="{{i.0}}">{{i.0}}</button>
+               
+                
+                </th>
+              <td>{{i.1}}</td>
+              <td>{{i.2}}</td>
+              <td>{{i.3}}</td>
+            
+    
+             
+                
+           
+              
+          </tr>
+          {% endfor %}
+      </table>
+      </form> 
+    </div>
+
+
+
+
+
+{% endblock %}

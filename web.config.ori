@@ -1,0 +1,27 @@
+<configuration>
+  <system.webServer>
+    <handlers>
+      <add name="Python FastCGI"
+           path="*"
+           verb="*"
+           modules="FastCgiModule"
+           scriptProcessor="C:\Users\ZeCar\AppData\Local\Programs\Python\Python311\python.exe|C:\Users\ZeCar\AppData\Local\Programs\Python\Python311\Lib\site-packages\wfastcgi.py"
+           resourceType="Unspecified"
+           requireAccess="Script" />
+    </handlers>
+  </system.webServer>
+
+  <appSettings>
+    <!-- Required settings -->
+    <add key="WSGI_HANDLER" value="proj_unico_web.wsgi_app()" />
+    <add key="PYTHONPATH" value="C:\unicoteste\proj_unico_web\proj_unico_web" />
+
+    <!-- Optional settings -->
+    <add key="WSGI_LOG" value="C:\Logs\my_app.log" />
+    <add key="WSGI_RESTART_FILE_REGEX" value=".*((\.py)|(\.config))$" />
+    <add key="APPINSIGHTS_INSTRUMENTATIONKEY" value="__instrumentation_key__" />
+    <add key="DJANGO_SETTINGS_MODULE" value="proj_unico_web.settings" />
+    <add key="WSGI_PTVSD_SECRET" value="__secret_code__" />
+    <add key="WSGI_PTVSD_ADDRESS" value="192.168.0.226:8000" />
+  </appSettings>
+</configuration>

@@ -1,0 +1,10 @@
+{% extends 'os/base.html' %}
+{% block conteudo %}
+<form action="{% url 'voltar_retirada' %}" method="POST">
+    {% csrf_token %} 
+<button class="btn1" name="assina" type="submit" value="{{query}}">voltar</button>
+
+</form>
+
+
+{% endblock %}

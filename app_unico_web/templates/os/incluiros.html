@@ -1,0 +1,48 @@
+{% extends 'os/base.html' %}
+{% block conteudo %}
+
+
+<h4>Inclusão Ordem de Serviço</h4>
+<form action="{% url 'pesquisacliente' %}" method="POST">
+    {% csrf_token %} 
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+   
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" name="pesquisa" type="search" placeholder="Pesquisar Cliente" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+            <input type="hidden" name="regserv" value="pesquisa_nome_entidade">
+            </form>
+    </div>
+  </nav>
+  </form>
+
+
+  <form action="{% url 'entidade' %}" method="POST">
+    {% csrf_token %} 
+        <table class="table table-success table-stripedy">
+            <tr>
+                
+                <td width="113">Cliente</td>
+
+            </tr>
+            {% for i in query %}
+            <tr>
+                <th scope="row">
+                <button name="incluirentidade" type="submit" value="{{i.2}}">{{i.0}}</button>
+                </div>
+                </th>
+                
+                <td>{{i.2}}</td>
+                <input type="hidden" name="regserv" value="incluir_entidade">
+                
+            
+                  
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+
+
+
+  {% endblock %}

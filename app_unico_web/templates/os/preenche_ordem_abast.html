@@ -1,0 +1,51 @@
+{% extends 'os/base.html' %}
+{% block conteudo %}
+
+<h4> Gerador de Ordem de abastecimento</h4>
+<div>
+<form action="{% url 'abastece' %}" method="POST">
+  {% csrf_token %}
+
+  
+
+  <form class="form-inline">
+    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Selecione o motorista</label>
+    <select name="motorista" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+      <option selected >Escolher...</option>
+      {% for i in motorista %}
+      <option>{{i.nome}}</option>
+      {% endfor %}
+    </select>
+    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Selecione o Veiculo</label>
+    <select name="veiculo" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+      
+      <option selected >Escolher...</option>
+      {% for i in veiculo %}
+      <option>{{i.modelo}} - {{i.placa}}</option>
+      {% comment %} <input type="hidden" name="placa" value={{i.1}}>  {% endcomment %}
+      {% endfor %}
+    </select>
+    
+ 
+
+
+    <div class="row">
+      <div class="col">
+        <input type="text" name="valor"class="form-control" placeholder="Valor">
+      </div>
+    
+      
+      
+  </div>
+  
+    <button type="submit" class="btn btn-primary my-1">Registrar Ordem de Abastecimento</button>
+  </form>
+
+  <a href="{% url 'incluir_veiculos' %}"><button type="button" class="btn btn-primary">Incluir Veiculos</button></a>
+  <a href="{% url 'incluir_motoristas' %}"><button type="button" class="btn btn-primary">Incluir Motoristas</button></a>
+  <a href="{% url 'consulta_ordem_abastecimentos' %}"><button type="button" class="btn btn-primary">Consultar Ordens Abastecimento</button></a>
+<div>
+
+
+
+{% endblock%}

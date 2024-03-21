@@ -1,0 +1,38 @@
+{% extends 'os/base.html' %}
+{% block conteudo %}
+
+<h3>Consulta de ordens de abastecimentos</h3>
+<table class="table table-hover">
+<thead>
+    <tr>
+      <th scope="col">Nº Ordem</th>
+      <th scope="col">Veículo</th>
+      <th scope="col">Motorista</th>
+      <th scope="col">Valor</th>
+      <th scope="col">Alterar valor</th>
+    </tr>
+  </thead>
+{% for i in ordens %}
+<form action="{% url 'altera_valor' %}" method="POST">
+    {% csrf_token %}
+ 
+    <tbody>
+      <tr>
+        <th scope="row">{{i.numero}} </i></th>
+        <td>{{i.veiculo}} </td>
+        <td>{{i.motorista}} </td>
+        <td>{{i.valor}} </td>
+        
+            <th scope="row" class="p-3 mb-2 bg-white text-dark">
+              <button name="subject" type="submit" value="{{i.numero}}">Alterar Valor</button>
+ 
+              </th>
+      </tr>
+    </form>  
+    </tbody>
+  
+
+{% endfor %}
+</table>
+
+{% endblock%}

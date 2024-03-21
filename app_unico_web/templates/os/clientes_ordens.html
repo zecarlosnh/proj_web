@@ -1,0 +1,46 @@
+
+{% extends 'os/base.html' %}
+{% block conteudo %}
+
+<h1>teste</h1>
+<form action="{% url 'cliente_consulta_os' %}" method="POST">
+    {% csrf_token %} 
+<div class="card-group">
+    <div class="card">
+    <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+    <div class="card-header">TOTAL DE ORDENS EM ABERTO</div>
+    <div class="card-body">
+      <h5 class="text-center">{{os_aberta}} </h5>
+      <p class="card-text">Um exemplo de texto rápido para construir o título do card e fazer preencher o conteúdo do card.</p>
+      
+      <button class="btn btn-primary" type="submit">CONSULTAR</button>
+      <input type="hidden" name="status" value="1">
+    </div>
+  </div>
+</div>
+
+
+    <div class="card">
+        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+    <div class="card-header">TOTAL DE ORDENS EM EXECUÇÃO</div>
+    <div class="card-body">
+      <h5 class="text-center" >{{os_exec}} </h5>
+      <p class="card-text">Um exemplo de texto rápido para construir o título do card e fazer preencher o conteúdo do card.</p>
+      <a href="#" class="btn btn-primary">Visitar</a>
+    </div>
+  </div>
+</div>
+
+<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+    <div class="card-header">TOTAL DE ORDENS FINALIZADAS</div>
+    <div class="card-body">
+      <h5 class="text-center">{{os_fin}}</h5>
+      <p class="card-text">Um exemplo de texto rápido para construir o título do card e fazer preencher o conteúdo do card.</p>
+      <a href="#" class="btn btn-primary">Visitar</a>
+    </div>
+  </div>
+
+
+</div>
+</form>
+{% endblock %}

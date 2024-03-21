@@ -1,0 +1,16 @@
+{% extends 'os/base.html' %}
+{% block conteudo %}
+<h1>teste</h1>
+{% for x in query %}
+
+    <h1>{{x.0}}</h1>
+    <form action="{% url 'voltaos' %}" method="POST">
+        {% csrf_token %} 
+        <th scope="row">
+        <button  class="btn btn-primary" name="subject" type="submit" value="{{x.0}}">Voltar</button>
+       
+
+    </form>
+{% endfor %}
+
+{% endblock %}
